@@ -9,6 +9,8 @@ type Movie = {
 };
 
 const movies = ref<Movie[]>([]);
+const url = Movies.imageURL;
+
 onMounted(async () => {
   const res = await Movies.getTrendingMovies();
 
@@ -19,9 +21,24 @@ onMounted(async () => {
 <template>
   <div>
     <h2>Trending Movies</h2>
-    <div v-for="movie in movies" :key="movie.id">
-      <img :src="movie.poster_path" />
-      <span>{{ movie.title }}</span>
+    <div class="movie-container">
+      <div v-for="movie in movies" :key="movie.id" class="movie-item">
+        <img :src="`${url}/${movie.poster_path}`" />
+        <span>{{ movie.title }}</span>
+      </div>
     </div>
   </div>
 </template>
+<style>
+.movie-container {
+  display: flex;
+  flex-wrap: wrap;
+}
+.movie-item {
+  width: 300px;
+}
+.movie-item img {
+    width: 100%;
+    /* max-width: 100%; */
+}
+</style>
