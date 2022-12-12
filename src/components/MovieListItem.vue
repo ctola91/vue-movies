@@ -30,6 +30,12 @@ const props = defineProps<{
 .movie-item {
   @apply max-w-xs w-auto;
 }
+.movie-item h3 {
+  @apply text-base;
+}
+.movie-item p {
+  @apply text-sm;
+}
 .movie-item img {
   @apply w-full;
 }
