@@ -22,7 +22,10 @@ const props = defineProps<{
         }}
       </h3>
       <p>{{ props.movie.overview }}</p>
-      <div>{{ props.movie.media_type }} - {{ props.movie.vote_average }}</div>
+      <div>
+      <font-awesome-icon icon="fa-solid fa-tv" v-show="props.movie.media_type === 'tv'" />
+      <font-awesome-icon icon="fa-solid fa-film" v-show="props.movie.media_type === 'movie'" />
+      - {{ props.movie.vote_average }}</div>
     </div>
   </RouterLink>
 </template>

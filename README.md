@@ -44,3 +44,11 @@ npm run build
 ```sh
 npm run lint
 ```
+
+
+### Estructura
+
+/  => Lista de Peliculas
+    /search/multi?api_key=&language=&query=&page=1
+/movies/id
+/tv/id
