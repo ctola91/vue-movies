@@ -30,9 +30,9 @@ const props = defineProps<{
   </RouterLink>
 </template>
 <style scoped>
-.movie-item {
+/* .movie-item {
   @apply max-w-xs w-auto;
-}
+} */
 .movie-item h3 {
   @apply text-base;
 }
