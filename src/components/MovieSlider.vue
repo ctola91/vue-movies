@@ -14,9 +14,9 @@ import "swiper/css/scrollbar";
 const props = defineProps<{
   movies: Movie[];
   title: string;
+  type: string;
 }>();
 
-// const movies = ref<Movie[]>([]);
 const url = Movies.imageURL;
 const onSwiper = (swiper: any) => {
   console.log(swiper);
@@ -25,37 +25,35 @@ const onSlideChange = () => {
   console.log("slide change");
 };
 const modules = [Navigation, Pagination, Scrollbar, A11y];
-// onMounted(async () => {
-//   const res = await Movies.getTrendingMovies();
-
-//   const { results } = res;
-//   movies.value = results;
-// });
 </script>
 <template>
   <div class="movie-list-section">
     <h2>{{ props.title }}</h2>
     <div class="movie-list-container">
       <Swiper
-        :slides-per-view="3"
-        :space-between="50"
+        :slides-per-view="'auto'"
+        :space-between="20"
         navigation
-        :pagination="{ clickable: true }"
         :scrollbar="{ draggable: true }"
+        :modules="modules"
+        @wswiper="onSwiper"
       >
         <SwiperSlide v-for="movie in props.movies" :key="movie.id">
-          <MovieListItem :movie="movie" />
+          <MovieListItem :movie="movie" :type="type" />
         </SwiperSlide>
       </Swiper>
     </div>
   </div>
 </template>
 <style scoped>
+.swiper-slide {
+  @apply max-w-xs;
+}
 .movie-list-section {
-  @apply flex flex-col items-center;
+  @apply flex flex-col items-start;
 }
 .movie-list-section h2 {
-  @apply text-2xl;
+  @apply text-2xl px-5;
 }
 .movie-list-container h2 {
   @apply text-2xl m-3;
