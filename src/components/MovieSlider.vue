@@ -59,6 +59,6 @@ const modules = [Navigation, Pagination, Scrollbar, A11y];
   @apply text-2xl m-3;
 }
 .movie-list-container {
-  @apply px-5 w-full;
+  @apply px-5 md:px-10 lg:px-16 w-full;
 }
 </style>
