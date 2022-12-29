@@ -7,9 +7,9 @@ import { library } from '@fortawesome/fontawesome-svg-core'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 
 /* import specific icons */
-import { faFilm, faTv } from '@fortawesome/free-solid-svg-icons'
+import { faFilm, faTv, faBars, faXmark } from '@fortawesome/free-solid-svg-icons'
 
-library.add(faFilm, faTv)
+library.add(faFilm, faTv, faBars, faXmark)
 
 import App from './App.vue'
 import router from './router'
