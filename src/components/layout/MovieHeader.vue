@@ -25,7 +25,6 @@ const toggleMenu = () => {
       </ul>
     </div>
     <div class="main-options">Test</div>
-    
   </header>
 </template>
 <style>

@@ -53,7 +53,7 @@ const modules = [Navigation, Pagination, Scrollbar, A11y];
   @apply flex flex-col items-start;
 }
 .movie-list-section h2 {
-  @apply text-2xl px-5;
+  @apply text-2xl px-10 lg:px-16;
 }
 .movie-list-container h2 {
   @apply text-2xl m-3;
