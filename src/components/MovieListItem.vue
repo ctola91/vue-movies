@@ -11,21 +11,25 @@ interface Props {
 }
 
 const props = withDefaults(defineProps<Props>(), {
-  type: 'wide'
+  type: "wide",
 });
 
 const image = computed<string | undefined>(() => {
-  if(props.type === 'person') {
-    return props.movie.profile_path
+  if (props.type === "person") {
+    return props.movie.profile_path;
   }
-  if(props.type === 'poster') {
-    return props.movie.poster_path
+  if (props.type === "poster") {
+    return props.movie.poster_path;
   }
   return props.movie.backdrop_path;
 });
 </script>
 <template>
-  <RouterLink to="/" class="movie-item" v-if="movie !== undefined">
+  <RouterLink
+    :to="`/movies/${movie.id}?type=${movie.media_type}`"
+    class="movie-item"
+    v-if="movie !== undefined"
+  >
     <img :src="`${url}/${image}`" :alt="props.movie.title" />
     <div class="movie-description">
       <!-- <h3>

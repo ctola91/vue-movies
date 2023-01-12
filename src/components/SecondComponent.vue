@@ -1,13 +1,13 @@
-<script lang="ts">
+<script setup lang="ts">
 import { defineComponent } from "vue";
 
-// const props = defineProps({
-//   name: { type: String, required: true},
-//   title: { type: String, required: true},
-//   description: { type: String, required: true},
-//   age: Number,
-//   isValid: Boolean
-// });
+const props = defineProps({
+  name: { type: String, required: true},
+  title: { type: String, required: true},
+  description: { type: String, required: true},
+  age: Number,
+  isValid: Boolean
+});
 
 // const props = defineProps<{
 //   name: string;
@@ -17,15 +17,15 @@ import { defineComponent } from "vue";
 //   isValid: boolean;
 // }>();
 
-export default defineComponent({
-    props: {
-        name: String,
-        title: String,
-        description: String,
-        age: Number,
-        isValid: Boolean
-    }
-});
+// export default defineComponent({
+//     props: {
+//         name: String,
+//         title: String,
+//         description: String,
+//         age: Number,
+//         isValid: Boolean
+//     }
+// });
 </script>
 <template>
   <div>
