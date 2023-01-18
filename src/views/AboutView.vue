@@ -4,15 +4,15 @@ import SecondComponent from "@/components/SecondComponent.vue";
 import MovieItem from "@/components/MovieItem.vue";
 import type { Person } from "@/types/Person";
 import ThirdComponent from "@/components/ThirdComponent.vue";
+import MoviePerson from "@/components/MoviePerson.vue";
 
 const person: Person = {
-  name: 'juan',
-  title: 'Software Developer',
-  description: 'Hello World',
+  name: "juan",
+  title: "Software Developer",
+  description: "Hello World",
   age: 12,
-  isValid: true
-}
-
+  isValid: true,
+};
 </script>
 <template>
   <div class="about">
@@ -25,7 +25,8 @@ const person: Person = {
       :age="12"
       :is-valid="true"
     /> -->
-    <ThirdComponent :person="person" />
+    <!-- <ThirdComponent :person="person" /> -->
+    <MoviePerson />
     <MovieItem />
   </div>
 </template>
