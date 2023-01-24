@@ -7,7 +7,7 @@ const getTrendingMovies = async (type: string = 'all') => {
     return response.data;
 }
 
-const getSingleContent = async (id: number, type?: string) => {
+const getSingleContent = async (id: number, type: string) => {
     const response = await API.get(`/${type}/${id}`);
     return response.data;
 }

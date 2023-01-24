@@ -8,4 +8,8 @@ export type Movie = {
     overview: string
     media_type: string
     vote_average: number
+    number_of_seasons?: number
+    number_of_episodes?: number
+    budget?: number
+    revenue?: number
 };

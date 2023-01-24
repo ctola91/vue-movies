@@ -1,40 +1,74 @@
 <script setup lang="ts">
 import Movies from "@/services/Movies";
 import type { Movie } from "@/types/Movie";
-import { reactive, computed } from "vue";
 
 const url = Movies.imageURL;
 
-const movie: Movie = reactive({
-  id: 1,
-  title: "First Movie",
-  overview: "",
-  media_type: "movie",
-  vote_average: 3.5,
-});
+interface Props {
+  movie?: Movie;
+  type: string;
+  title: string;
+}
+
+const props = defineProps<Props>();
+
 </script>
 <template>
-  <RouterLink :to="`/movies/${movie.id}?type=${movie.media_type}`" class="movie-item" v-if="movie !== undefined">
-    <div class="movie-description">
-      <h3>
-        {{ movie.title }}
-      </h3>
-      <p>{{ movie.overview }}</p>
-      <div>
-        <font-awesome-icon
-          icon="fa-solid fa-tv"
-          v-show="movie.media_type === 'tv'"
-        />
-        <font-awesome-icon
-          icon="fa-solid fa-film"
-          v-show="movie.media_type === 'movie'"
-        />
-        - {{ movie.vote_average }}
+  <div class="movie-description" v-if="movie">
+    <div class="movie-container">
+      <div class="image-container">
+        <img :src="`${url}/${movie.poster_path}`" :alt="movie.title" />
+      </div>
+      <div class="movie-info">
+        <h2 class="movie-title">
+          {{ title }}
+        </h2>
+        <p>{{ movie.overview }}</p>
+        <div>Votes: {{ movie.vote_average }}</div>
+        <div>
+          <h3>Details</h3>
+          <table class="">
+            <tbody>
+              <tr v-if="movie.number_of_seasons">
+                <td>Seasons</td>
+                <td>{{ movie.number_of_seasons }}</td>
+              </tr>
+              <tr v-if="movie.number_of_episodes">
+                <td>Episodes</td>
+                <td>{{ movie.number_of_episodes }}</td>
+              </tr>
+              <tr v-if="movie.revenue">
+                <td>Revenue</td>
+                <td>{{ movie.revenue }}</td>
+              </tr>
+              <tr v-if="movie.budget">
+                <td>Budget</td>
+                <td>{{ movie.budget }}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
       </div>
     </div>
-  </RouterLink>
+  </div>
 </template>
 <style scoped>
+.movie-container {
+  @apply flex flex-col sm:flex-row justify-center items-center;
+}
+
+.movie-container .image-container {
+  @apply w-full sm:w-1/2;
+}
+.movie-container .image-container img {
+  @apply mx-auto mb-5;
+}
+.movie-container .movie-info {
+  @apply w-full sm:w-1/2 p-4;
+}
+.movie-title {
+  @apply text-3xl mb-6;
+}
 .swiper-slide {
   @apply max-w-xs;
 }
@@ -47,7 +81,10 @@ const movie: Movie = reactive({
 .movie-item p {
   @apply text-sm;
 }
-/* .movie-item img {
-  @apply max-w-xs;
-} */
+.movie-description table {
+  @apply border-collapse border border-slate-400 w-full;
+}
+.movie-description td {
+  @apply border border-slate-300 px-10;
+}
 </style>

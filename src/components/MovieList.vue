@@ -1,29 +1,13 @@
 <script setup lang="ts">
-import { Navigation, Pagination, Scrollbar, A11y } from "swiper";
-import { Swiper, SwiperSlide } from "swiper/vue";
 import Movies from "@/services/Movies";
 import type { Movie } from "@/types/Movie";
 import { onMounted, ref } from "vue";
 import MovieSlider from "./MovieSlider.vue";
 
-import "swiper/css";
-import "swiper/css/navigation";
-import "swiper/css/pagination";
-import "swiper/css/scrollbar";
-
 const all = ref<Movie[]>([]);
 const movies = ref<Movie[]>([]);
 const series = ref<Movie[]>([]);
 const people = ref<Movie[]>([]);
-
-const url = Movies.imageURL;
-const onSwiper = (swiper: any) => {
-  console.log(swiper);
-};
-const onSlideChange = () => {
-  console.log("slide change");
-};
-const modules = [Navigation, Pagination, Scrollbar, A11y];
 
 const getTrendingAll = async () => {
   const { results } = await Movies.getTrendingMovies();

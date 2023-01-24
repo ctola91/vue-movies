@@ -3,7 +3,6 @@ import { Navigation, Pagination, Scrollbar, A11y } from "swiper";
 import { Swiper, SwiperSlide } from "swiper/vue";
 import Movies from "@/services/Movies";
 import type { Movie } from "@/types/Movie";
-import { onMounted, ref } from "vue";
 import MovieListItem from "./MovieListItem.vue";
 
 import "swiper/css";
@@ -20,9 +19,6 @@ const props = defineProps<{
 const url = Movies.imageURL;
 const onSwiper = (swiper: any) => {
   console.log(swiper);
-};
-const onSlideChange = () => {
-  console.log("slide change");
 };
 const modules = [Navigation, Pagination, Scrollbar, A11y];
 </script>
