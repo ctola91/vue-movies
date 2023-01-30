@@ -14,6 +14,9 @@ export const useMovieStore = defineStore("movies", () => {
   const tvShows = computed(() =>
     movies.value.filter((m) => m.media_type === "tv")
   );
+  const onlyMovies = computed(() =>
+    movies.value.filter((m) => m.media_type === "movie")
+  );
   const movieTitle = computed(() =>
     movieSelected.value?.title
       ? movieSelected.value.title
@@ -35,6 +38,7 @@ export const useMovieStore = defineStore("movies", () => {
     movies,
     movieSelected,
     tvShows,
+    onlyMovies,
     movieTitle,
     isLoading,
     trendingMovies,
