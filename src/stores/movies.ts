@@ -5,18 +5,11 @@ import type { Movie } from "@/types/Movie";
 
 export const useMovieStore = defineStore("movies", () => {
   // data
+  const all = ref<Movie[]>([]);
   const movies = ref<Movie[]>([]);
+  const tvShows = ref<Movie[]>([]);
   const movieSelected = ref<Movie>();
-  const isLoading = ref<boolean>(false);
 
-  // getters
-  const trendingMovies = computed(() => movies);
-  const tvShows = computed(() =>
-    movies.value.filter((m) => m.media_type === "tv")
-  );
-  const onlyMovies = computed(() =>
-    movies.value.filter((m) => m.media_type === "movie")
-  );
   const movieTitle = computed(() =>
     movieSelected.value?.title
       ? movieSelected.value.title
@@ -26,22 +19,34 @@ export const useMovieStore = defineStore("movies", () => {
   );
 
   // actions
+  const getAll = async () => {
+    const { results } = await Movies.getTrendingMovies();
+    all.value = results;
+  };
+
+  const getTvShows = async () => {
+    const { results } = await Movies.getTrendingMovies("tv");
+    tvShows.value = results;
+  };
+
   const getMovies = async () => {
-    movies.value = await Movies.getTrendingMovies();
+    const { results } = await Movies.getTrendingMovies("movie");
+    movies.value = results;
   };
 
   const getMovie = async (id: number, type: string) => {
-    movieSelected.value = await Movies.getSingleContent(id, type);
+    const { results } = await Movies.getSingleContent(id, type);
+    movieSelected.value = results;
   };
 
   return {
+    all,
+    getAll,
+    getTvShows,
     movies,
     movieSelected,
     tvShows,
-    onlyMovies,
     movieTitle,
-    isLoading,
-    trendingMovies,
     getMovies,
     getMovie,
   };

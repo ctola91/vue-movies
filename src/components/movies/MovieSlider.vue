@@ -17,9 +17,7 @@ const props = defineProps<{
 }>();
 
 const url = Movies.imageURL;
-const onSwiper = (swiper: any) => {
-  console.log(swiper);
-};
+
 const modules = [Navigation, Pagination, Scrollbar, A11y];
 </script>
 <template>
@@ -32,7 +30,6 @@ const modules = [Navigation, Pagination, Scrollbar, A11y];
         navigation
         :scrollbar="{ draggable: true }"
         :modules="modules"
-        @wswiper="onSwiper"
       >
         <SwiperSlide v-for="movie in props.movies" :key="movie.id">
           <MovieListItem :movie="movie" :type="type" />
